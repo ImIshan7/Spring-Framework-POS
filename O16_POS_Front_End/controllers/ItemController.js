@@ -4,9 +4,9 @@ getAllItems();
 
 //add item event
 $("#btnItem").click(function () {
-    if (checkAllItems()){
+    /*if (checkAllItems()){*/
         saveItem();
-    }
+/*    }*/
 
 });
 
@@ -69,7 +69,7 @@ $("#btn-clear").click(function () {
 function saveItem() {
     let itemCode = $("#itemCode").val();
     //check item is exists or not?
-    if (searchItem(itemCode.trim()) == undefined) {
+    /*if (searchItem(itemCode.trim()) == undefined) {*/
 
         //if the customer is not available then add him to the array
         let itemFormData = $("#itemForm").serialize();
@@ -92,11 +92,11 @@ function saveItem() {
 
 
 
-
+/*
     } else {
         alert("Item already exits.!");
         clearItemInputFields();
-    }
+    }*/
 }
 
 function getAllItems() {
