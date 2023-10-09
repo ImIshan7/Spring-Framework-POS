@@ -6,14 +6,10 @@ import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
 public class CustomerController {
-
-
 
     @Autowired
     CustomerService service;
@@ -45,5 +41,4 @@ public class CustomerController {
         service.updateCustomer(c);
         return new ResponseUtil("Ok","Successfully Updated",c);
     }
-
 }

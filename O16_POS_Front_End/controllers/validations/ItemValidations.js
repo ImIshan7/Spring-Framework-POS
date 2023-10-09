@@ -1,3 +1,4 @@
+/*
 // validation for item
 const ITEM_CODE_REGEX = /^(I00-)[0-9]{3}$/;
 const ITEM_NAME_REGEX = /^[A-Za-z ]{3,}$/;
@@ -106,3 +107,4 @@ function setItemBtn() {
 
 }
 
+*/

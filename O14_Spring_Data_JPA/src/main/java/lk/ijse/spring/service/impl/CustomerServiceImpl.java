@@ -8,31 +8,27 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
+import javax.transaction.Transactional;
 import java.util.List;
 
-
-@Transactional
 @Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
+
     @Autowired
     CustomerRepo customerRepo;
-
     @Autowired
     ModelMapper mapper;
 
-    public CustomerServiceImpl() {
-        System.out.println("CustomerServiceImpl Instantiated");
-    }
 
     @Override
     public void addCustomer(CustomerDTO dto) {
+        //service level validations
         if (customerRepo.existsById(dto.getId())) {
             throw new RuntimeException(dto.getId()+" is already available, please insert a new ID");
         }
-
         Customer map = mapper.map(dto, Customer.class);
+
         customerRepo.save(map);
     }
 

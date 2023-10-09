@@ -1,15 +1,14 @@
-const BASE_URL = "http://localhost:8082/O14_Spring_Data_JPA_war/";
+const BASE_URL = "http://localhost:8087/O14_Spring_Data_JPA_war/";
 
 //load all existing customers
 getAllCustomers();
 
 //add customer event
 $("#btnCustomer").click(function () {
-    if (checkAll()) {
+
         saveCustomer();
-    } else {
-        alert("Error");
-    }
+
+
 
 });
 
@@ -71,7 +70,7 @@ $("#btn-clear1").click(function () {
 function saveCustomer() {
     let customerID = $("#txtCustomerID").val();
     //check customer is exists or not?
-    if (searchCustomer(customerID.trim()) == undefined) {
+    /*if (searchCustomer(customerID.trim()) == undefined) {*/
 
         let formData = $("#customerForm").serialize();
         $.ajax({
@@ -83,7 +82,7 @@ function saveCustomer() {
             data: formData,
             success: function (res) {
                 alert(res.message);
-                clearCustomerInputFields();
+               /* clearCustomerInputFields();*/
                 getAllCustomers();
             },
             error: function (error) {
@@ -92,10 +91,10 @@ function saveCustomer() {
         });
 
 
-    } else {
+  /*  } else {
         alert("Customer already exits.!");
         clearCustomerInputFields();
-    }
+    }*/
 }
 
 function getAllCustomers() {
@@ -129,7 +128,7 @@ function getAllCustomers() {
 
 function deleteCustomer(id) {
     $.ajax({
-        url: BASE_URL + 'customer?cusID=' + id,
+        url: BASE_URL + 'customer?id=' + id,
         method: 'delete',
         headers:{
             Auth:"user=admin,pass=admin"
@@ -137,7 +136,7 @@ function deleteCustomer(id) {
         success: function (resp) {
             alert(resp.message);
             getAllCustomers();
-            clearCustomerInputFields()
+            /*clearCustomerInputFields()*/
             return true;
         },
         error: function (error) {
@@ -201,7 +200,7 @@ function updateCustomer(id) {
                 success: function (resp) {
                     alert(resp.message);
                     getAllCustomers();
-                    clearCustomerInputFields();
+                   /* clearCustomerInputFields();*/
                 },
                 error: function (error) {
                     alert(error.responseJSON.message);
@@ -211,6 +210,5 @@ function updateCustomer(id) {
     }
 
 }
-
 
 
